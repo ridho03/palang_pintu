@@ -1,50 +1,38 @@
 <?php
+include "../koneksi/koneksi.php";
+$connection = mysqli_connect($servername, $username, $password, $dbname);
+
+$query_run = mysqli_query($connection, "SELECT * FROM data");
+
 if (isset($_GET['uid'])) {
     $uid = $_GET['uid'];
-    //echo "User ID: " . $uid; // Menampilkan UID
+    //echo "User ID: " . $uid; // Menampilkan UID jika diperlukan
 }
+
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Dashboard</title>
+    <title>Add Member</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ecf0f1;
-            color: #333;
+            background-color: #f7f7f7;
+            /* Warna latar belakang lebih lembut */
             margin: 0;
             padding: 0;
         }
 
-        .dropdown {
-            color: black;
-        }
-
-        .dropdown-toggle {
-            background-color: #3498db;
-        }
-
-        .btn-group {
-            background-color: white;
-        }
-
-        .dropdown-toggl {
-            background-color: white;
-        }
-
         .navbar {
-            background-color: #3498db;
+            background-color: #4a90e2;
             padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: white;
         }
 
         .navbar-brand {
@@ -53,79 +41,66 @@ if (isset($_GET['uid'])) {
             font-weight: bold;
         }
 
-        .container {
-            max-width: auto;
-            margin: 0 auto;
+        .form-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
             padding: 20px;
+            border-radius: 10px;
+            /* Lebih lembut */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* Lebih lembut */
         }
 
-        table {
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="file"] {
             width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #219049;
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .box {
-            background-color: #f2f2f2;
             padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            max-width: auto;
-            margin: 20px 0;
+            box-sizing: border-box;
         }
 
-        .add-member-button {
-            background-color: #27ae60;
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4a90e2;
             color: #fff;
-            padding: 10px 20px;
+            text-align: center;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
+            /* Transisi saat dihover */
         }
 
-        .add-member-button:hover {
-            background-color: #219049;
+        .btn:hover {
+            background-color: #357abd;
+            /* Warna biru sedikit lebih tua saat tombol dihover */
         }
 
-        .catatan-button {
-            background-color: #f39c12;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .register-link {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
         }
 
-        .catatan-button:hover {
-            background-color: #d68910;
-        }
-
-        .uga-button {
-            background-color: #e74c3c;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .uga-button:hover {
-            background-color: #c43c2c;
+        .register-link a {
+            color: #4a90e2;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -142,13 +117,13 @@ if (isset($_GET['uid'])) {
                 CARBON
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="">Dashboard</a></li>
+                <li><a class="dropdown-item" href="index.php?uid=<?php echo $uid; ?>">Dashboard</a></li>
                 <li><a class="dropdown-item" href="tambah.php?uid=<?php echo $uid; ?>">Tambah Kendaraan</a></li>
                 <!-- <li><a class="dropdown-item" href="info/data.php?uid=<?php echo $uid; ?>">Catatan</a></li> -->
-                <li><a class="dropdown-item" href="kendaraan.php?uid=<?php echo $uid; ?>">Data Kendaraan</a></li>
+                <li><a class="dropdown-item" href="">Data Kendaraan</a></li>
             </ul>
         </div>
-
+        <!-- Example single danger button -->
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -160,13 +135,11 @@ if (isset($_GET['uid'])) {
             </ul>
         </div>
     </nav>
+    <span class="navbar-brand"></span>
+    </nav>
 
-
-    <div>
-        <!-- <h2>Data Data <a href="tambah.php" class="add-member-button" style="padding: 7px;">Add Member</a> -->
-        <!--  -->
-
-        <table>
+    <table class="table">
+        <thead>
             <tr>
                 <th>ID</th>
                 <th>Nama</th>
@@ -176,17 +149,13 @@ if (isset($_GET['uid'])) {
                 <th>Tipe</th>
                 <th>CC</th>
                 <th>Tanggal Berlaku</th>
-                <th>Aksi</th>
+                <th scope="col"></th>
             </tr>
+        </thead>
+        <tbody>
             <?php
-            include "../koneksi/koneksi.php";
-            $connection = mysqli_connect($servername, $username, $password, $dbname);
-
-            // Query untuk mendapatkan data berdasarkan uid
-            $query_run = mysqli_query($conn, "SELECT * FROM data WHERE uid='$uid'");
-
             while ($row = mysqli_fetch_array($query_run)) {
-                // Tampilkan data dari tabel data
+                echo "<tr>";
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['nama'] . "</td>";
@@ -196,20 +165,16 @@ if (isset($_GET['uid'])) {
                 echo "<td>" . $row['tipe'] . "</td>";
                 echo "<td>" . $row['CC'] . "</td>";
                 echo "<td>" . $row['tanggal_berlaku'] . "</td>";
-                echo "<td>";
-                // Tombol untuk aksi hapus, sekarang menggunakan id
-                echo "<a href='../hapus/index.php?id=" . $row['id'] . "' class='btn btn-danger'>Hapus</a> ";
-                // Tombol untuk aksi ubah
-                echo "<a href='../ubah/index.php?id=" . $row['id'] . "' class='btn btn-warning'>Ubah</a> ";
-                // Tombol untuk aksi info
-                echo "<a href='info/data.php?id=" . $row['id'] . "' class='btn btn-info'>Info</a>";
-                echo "</td>";
+                echo "<td><img src='../image/" . $row["files"] . "' alt='" . $row["files"] . "' style='width:100px; height:auto;'></td>";
+
                 echo "</tr>";
             }
             ?>
-        </table>
-    </div>
+        </tbody>
+    </table>
 
+    </script>
 </body>
+
 
 </html>
