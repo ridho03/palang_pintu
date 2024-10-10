@@ -9,5 +9,5 @@
 6. buka chrome atau web browser lainnya dan buka http://localhost/phpmyadmin/
 7. selanjutnya klik "import" dan "select file carbon.sql" dari file yang di carbon tadi
 8. selanjutnya buka chrome buka "http://localhost/carbon"
-9. maka akan kebuka tampilan login web dan masukan username "admin" password "admin"
+9. maka akan kebuka tampilan login web dan masukan username "ridho" password "ridho"
 10. done
