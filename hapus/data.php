@@ -19,12 +19,12 @@ if ($data) {
     if ($hapus) {
         // Redirect ke halaman dashboard dengan UID di URL
         echo "<script>alert('Data berhasil dihapus');</script>";
-        echo "<script>window.location.href = '../dasboard/index.php?uid=$uid';</script>";
+        echo "<script>window.location.href = '../dasboard/admin/info.php?uid=$uid';</script>";
     } else {
-        echo "<script>alert('Data tidak dapat dihapus'); window.location.href = '../dasboard/index.php';</script>";
+        echo "<script>alert('Data tidak dapat dihapus'); window.location.href = '../dasboard/admin/info.php';</script>";
     }
 } else {
     // Jika UID tidak ditemukan
-    echo "<script>alert('UID tidak ditemukan'); window.location.href = '../dasboard/index.php';</script>";
+    echo "<script>alert('UID tidak ditemukan'); window.location.href = '../dasboard/admin/info.php';</script>";
 }
 ?>
