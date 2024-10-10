@@ -1,6 +1,5 @@
 <?php
 include "koneksi/koneksi.php";
-
 // Memeriksa koneksi
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -12,17 +11,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Mengecek apakah username dan password valid
-    $sql = "SELECT * FROM login WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        // Ambil data pengguna
-        $row = mysqli_fetch_assoc($result);
-        $uid = $row['uid']; // Ambil UID dari hasil query login
-
-        // Login berhasil, redirect dengan UID di URL
-        echo '<script>alert("Berhasil Login!");</script>';
-        header("Location: dasboard/index.php?uid=" . $uid);
+        // Login berhasil
+        echo '<script>alert("Berhasil Login!");';
+        header("Location: dasboard/admin/index.php");
         exit();
     } else {
         // Login gagal

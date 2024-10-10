@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Register</title>
+    <title>Login</title>
     <style>
       body {
         font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        /* Latar belakang berwarna abu-abu (#f5f5f5) */
+        background-color: #f5f5f5; /* Latar belakang berwarna abu-abu (#f5f5f5) */
         margin: 0;
         padding: 0;
       }
 
       .navbar {
-        background-color: #4a90e2;
-        /* Warna biru (#4a90e2) untuk navbar */
+        background-color: #4a90e2; /* Warna biru (#4a90e2) untuk navbar */
         padding: 10px;
         display: flex;
         justify-content: space-between;
@@ -46,8 +44,7 @@
       .form-container {
         max-width: 400px;
         margin: 100px auto;
-        background-color: #fff;
-        /* Latar belakang putih (#fff) untuk kontainer formulir */
+        background-color: #fff; /* Latar belakang putih (#fff) untuk kontainer formulir */
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -76,8 +73,7 @@
         display: block;
         width: 100%;
         padding: 10px;
-        background-color: #4a90e2;
-        /* Gunakan warna biru (#4a90e2) yang sama dengan navbar untuk tombol */
+        background-color: #4a90e2; /* Gunakan warna biru (#4a90e2) yang sama dengan navbar untuk tombol */
         color: #fff;
         text-align: center;
         border: none;
@@ -86,15 +82,13 @@
       }
 
       .btn:hover {
-        background-color: #357abd;
-        /* Warna biru sedikit lebih tua (#357abd) saat tombol dihover */
+        background-color: #357abd; /* Warna biru sedikit lebih tua (#357abd) saat tombol dihover */
       }
     </style>
   </head>
-
   <body>
     <nav class="navbar">
-      <span class="navbar-brand">REGISTER AKSES</span>
+      <span class="navbar-brand">ADMIN AKSES</span>
     </nav>
 
     <div class="form-container">
@@ -104,19 +98,9 @@
         alt=""
       />
 
-      <h2 style="text-align: center; color: #4a90e2">Register</h2>
+      <h2 style="text-align: center; color: #4a90e2">ADMIN</h2>
       <!-- Gunakan warna biru (#4a90e2) yang sama dengan navbar untuk teks Login -->
-      <form action="register.php" method="POST">
-        <div class="form-group">
-          <label for="username">UID:</label>
-          <input
-            type="text"
-            id="uid"
-            name="uid"
-            required
-            maxlength="20"
-          />
-        </div>
+      <form action="admin.php" method="POST">
         <div class="form-group">
           <label for="username">Username:</label>
           <input
@@ -131,7 +115,7 @@
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required />
         </div>
-        <button type="submit" class="btn">Register</button>
+        <button type="submit" class="btn">Login</button>
         <p
           style="
             text-align: center;
@@ -142,11 +126,12 @@
         >
           Klik
           <a href="index.html" style="color: #4a90e2; text-decoration: none"
-            >login</a
+            >Login</a
           >
           untuk login &
           Login <a href="admin.html" style="color: #4a90e2; text-decoration: none">admin</a>
         </p>
+
       </form>
     </div>
   </body>

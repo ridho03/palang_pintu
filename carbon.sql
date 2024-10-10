@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2024 at 03:27 AM
+-- Generation Time: Oct 08, 2024 at 08:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -36,9 +37,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`username`, `password`) VALUES
-('admin', 'admin'),
-('ridho', 'ridho');
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -47,21 +47,31 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 --
 
 CREATE TABLE `data` (
-  `id` int(255) NOT NULL,
+  `no` int(255) NOT NULL,
+  `id` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `npm` varchar(255) NOT NULL,
+  `alamat` varchar(255) NOT NULL,
   `uid` varchar(255) NOT NULL,
+  `merk` varchar(255) NOT NULL,
   `no_plat` varchar(255) NOT NULL,
-  `kendaraan` varchar(255) NOT NULL,
+  `tipe` varchar(255) NOT NULL,
+  `CC` varchar(255) NOT NULL,
+  `tanggal_berlaku` date NOT NULL DEFAULT current_timestamp(),
   `files` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `data`
+-- Table structure for table `login`
 --
 
-INSERT INTO `data` (`id`, `nama`, `npm`, `uid`, `no_plat`, `kendaraan`, `files`) VALUES
-(1, 'Ridho Setiawan', '1231232', '933B7994', 'BM 3455 AA', 'N-MAX', '1727948567_download.jpeg');
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL,
+  `uid` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -70,50 +80,69 @@ INSERT INTO `data` (`id`, `nama`, `npm`, `uid`, `no_plat`, `kendaraan`, `files`)
 --
 
 CREATE TABLE `sensor` (
-  `id` int(11) NOT NULL,
+  `no` int(11) NOT NULL,
+  `id` varchar(255) NOT NULL,
   `co2` varchar(255) NOT NULL,
   `no2` varchar(255) NOT NULL,
   `nh3` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `sensor`
---
-
-INSERT INTO `sensor` (`id`, `co2`, `no2`, `nh3`) VALUES
-(1, '23', '43', '54');
-
---
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `data`
 --
 ALTER TABLE `data`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`no`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uid` (`uid`);
 
 --
 -- Indexes for table `sensor`
 --
 ALTER TABLE `sensor`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`no`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sensor`
 --
 ALTER TABLE `sensor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
