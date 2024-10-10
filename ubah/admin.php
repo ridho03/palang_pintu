@@ -1,6 +1,6 @@
 <?php
 include "../koneksi/koneksi.php";
-$sql = mysqli_query($conn, "select * from data where id='$_GET[id]'");
+$sql = mysqli_query($conn, "select * from login where uid='$_GET[uid]'");
 $data = mysqli_fetch_array($sql);
 ?>
 
@@ -9,6 +9,9 @@ $data = mysqli_fetch_array($sql);
 
 <head>
     <title>Add Member</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -97,8 +100,12 @@ $data = mysqli_fetch_array($sql);
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
     <nav class="navbar">
-        <span class="navbar-brand">Ubah Member</span>
+        <span class="navbar-brand">Edit Data</span>
     </nav>
 
     <div class="form-container">
@@ -106,47 +113,20 @@ $data = mysqli_fetch_array($sql);
 
             <div class="form-group">
                 <label for="uid">UID</label>
-                <input type="text" id="uid" name="uid" value="<?php echo $data['uid']; ?>" readonly />
+                <input type="text" id="uid" name="uid" readonly value="<?php echo $data['uid']; ?>" />
             </div>
             <div class="form-group">
-                <label for="id">ID</label>
-                <input type="text" id="id" name="id" value="<?php echo $data['id']; ?>" readonly />
+                <label for="usernama">Username</label>
+                <input type="text" id="usernama" name="usernama" required maxlength="255"
+                    value="<?php echo $data['username']; ?>" />
             </div>
             <div class="form-group">
-                <label for="no_plat">No Plat</label>
-                <input type="text" id="no_plat" name="no_plat" required maxlength="200"
-                    value="<?php echo $data['no_plat']; ?>" />
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password" required maxlength="200"
+                    value="<?php echo $data['password']; ?>" />
             </div>
-            <div class="form-group">
-                <label for="nama">Nama</label>
-                <input type="text" id="nama" name="nama" required maxlength="255"
-                    value="<?php echo $data['nama']; ?>" />
-            </div>
-            <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <input type="text" id="alamat" name="alamat" required maxlength="200"
-                    value="<?php echo $data['alamat']; ?>" />
-            </div>
-            <div class="form-group">
-                <label for="merk">Merk</label>
-                <input type="text" id="merk" name="merk" required maxlength="200"
-                    value="<?php echo $data['merk']; ?>" />
-            </div>
-            <div class="form-group">
-                <label for="tipe">Tipe</label>
-                <input type="text" id="tipe" name="tipe" required maxlength="200"
-                    value="<?php echo $data['tipe']; ?>" />
-            </div>
-            <div class="form-group">
-                <label for="tanggal_berlaku">Tanggal Berlaku</label>
-                <input type="date" id="tanggal_berlaku" name="tanggal_berlaku" required maxlength="200"
-                    value="<?php echo $data['tanggal_berlaku']; ?>" />
-            </div>
-            <div class="form-group">
-                <label for="CC">CC Kendaraan</label>
-                <input type="text" id="CC" name="CC" required maxlength="200" value="<?php echo $data['CC']; ?>" />
-            </div>
-            <input type="submit" name="submit" value="Submit" class="btn">
+
+            <input type="submit" name="submit" value="submit" class="btn">
         </form>
     </div>
 
@@ -178,28 +158,12 @@ $data = mysqli_fetch_array($sql);
 include "../koneksi/koneksi.php";
 
 if (isset($_POST['submit'])) {
-    // Lakukan query update
-    $query = "UPDATE data SET  
-        no_plat = '$_POST[no_plat]',
-        nama = '$_POST[nama]',
-        id = '$_POST[id]',
-        uid = '$_POST[uid]',
-        alamat = '$_POST[alamat]',
-        merk = '$_POST[merk]',
-        tipe = '$_POST[tipe]',
-        CC = '$_POST[CC]',
-        tanggal_berlaku = '$_POST[tanggal_berlaku]'
-        WHERE id = '$_GET[id]'";
+    mysqli_query($conn, "UPDATE login SET  
+    username = '$_POST[usernama]', -- Mengubah usernama menjadi username
+    password = '$_POST[password]'
+    WHERE uid = '$_GET[uid]'");
 
-    if (mysqli_query($conn, $query)) {
-        // Jika berhasil, arahkan ke halaman lain dengan parameter UID
-        echo "<script>
-            alert('Data Berhasil Diubah');
-            window.location.href = '../../palang_pintu/dasboard/index.php?uid=" . $_POST['uid'] . "';
-        </script>";
-    } else {
-        // Jika terjadi kesalahan, tampilkan pesan error
-        echo "<script>alert('Gagal mengubah data');</script>";
-    }
+    echo "<script>alert('Data Berhasil Diubah'); window.location.href = '../../palang_pintu/dasboard/admin/index.php';</script>";
 }
+
 ?>

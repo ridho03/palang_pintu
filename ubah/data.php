@@ -105,12 +105,8 @@ $data = mysqli_fetch_array($sql);
         <form method="POST" action="" enctype="multipart/form-data">
 
             <div class="form-group">
-                <label for="uid">UID</label>
-                <input type="text" id="uid" name="uid" value="<?php echo $data['uid']; ?>" readonly />
-            </div>
-            <div class="form-group">
-                <label for="id">ID</label>
-                <input type="text" id="id" name="id" value="<?php echo $data['id']; ?>" readonly />
+                <label for="uid">ID</label>
+                <input type="text" id="uid" name="uid" value="<?php echo $data['id']; ?>" readonly />
             </div>
             <div class="form-group">
                 <label for="no_plat">No Plat</label>
@@ -180,22 +176,18 @@ include "../koneksi/koneksi.php";
 if (isset($_POST['submit'])) {
     // Lakukan query update
     $query = "UPDATE data SET  
-        no_plat = '$_POST[no_plat]',
         nama = '$_POST[nama]',
-        id = '$_POST[id]',
         uid = '$_POST[uid]',
-        alamat = '$_POST[alamat]',
-        merk = '$_POST[merk]',
-        tipe = '$_POST[tipe]',
-        CC = '$_POST[CC]',
-        tanggal_berlaku = '$_POST[tanggal_berlaku]'
+        npm = '$_POST[npm]',
+        no_plat = '$_POST[no_plat]',
+        kendaraan = '$_POST[kendaraan]'
         WHERE id = '$_GET[id]'";
 
     if (mysqli_query($conn, $query)) {
         // Jika berhasil, arahkan ke halaman lain dengan parameter UID
         echo "<script>
             alert('Data Berhasil Diubah');
-            window.location.href = '../../palang_pintu/dasboard/index.php?uid=" . $_POST['uid'] . "';
+            window.location.href = '../../palang_pintu/dasboard/admin/info.php?uid=" . $_POST['uid'] . "';
         </script>";
     } else {
         // Jika terjadi kesalahan, tampilkan pesan error
