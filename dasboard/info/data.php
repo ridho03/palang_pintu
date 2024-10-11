@@ -12,7 +12,7 @@ $query_run = mysqli_query($connection, "SELECT * FROM sensor WHERE id='$id'");
 <html>
 
 <head>
-  <title>Add Member</title>
+  <title>Data Sensor</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -111,8 +111,8 @@ $query_run = mysqli_query($connection, "SELECT * FROM sensor WHERE id='$id'");
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="../index.php">Dashboard</a></li>
         <li><a class="dropdown-item" href="../tambah.php">Tambah Kendaraan</a></li>
-        <li><a class="dropdown-item" href="#">Catatan</a></li>
-        <li><a class="dropdown-item" href="../kendaraan.php">Data Kendaraan</a></li>
+        <!-- <li><a class="dropdown-item" href="#">Catatan</a></li> -->
+        <li><a class="dropdown-item" href="../kendaraan.php">Shop</a></li>
       </ul>
     </div>
     <div class="btn-group">
@@ -140,6 +140,7 @@ $query_run = mysqli_query($connection, "SELECT * FROM sensor WHERE id='$id'");
           <th scope="col">CO2</th>
           <th scope="col">NO2</th>
           <th scope="col">NH3</th>
+          <th scope="col">Jumlah Karbon</th>
         </tr>
       </thead>
       <tbody>
@@ -151,10 +152,11 @@ $query_run = mysqli_query($connection, "SELECT * FROM sensor WHERE id='$id'");
             echo "<td>" . $row['co2'] . "</td>";
             echo "<td>" . $row['no2'] . "</td>";
             echo "<td>" . $row['nh3'] . "</td>";
+            echo "<td>" . $row['jkarbon'] . "</td>";
             echo "</tr>";
           }
         } else {
-          echo "<tr><td colspan='4'>Tidak ada data ditemukan untuk ID ini</td></tr>";
+          echo "<tr><td colspan='5'>Tidak ada data ditemukan untuk ID ini</td></tr>";
         }
         ?>
       </tbody>
