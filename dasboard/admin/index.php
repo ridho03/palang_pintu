@@ -183,36 +183,8 @@ $query_run = mysqli_query($connection, "SELECT * FROM login");
                 ?>
             </tbody>
         </table>
-
-
-
-        <!-- <table>
-            <tr>
-                <th>UID</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Aksi</th>
-            </tr>
-            <?php
-            include "../../koneksi/koneksi.php";
-            $connection = mysqli_connect($servername, $username, $password, $dbname);
-            $query_run = mysqli_query($connection, "select * from login");
-            while ($row = mysqli_fetch_array($query_run)) {
-                ?>
-                <tr>
-                    <td><?php echo $row['uid']; ?></td>
-                    <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['password']; ?></td>
-                    <td class="aksi">
-                        <a href="../../hapus/admin.php?uid=<?php echo $row['uid']; ?>" class="uga-button">Hapus</a>
-                        <a href="../../ubah/index.php?uid=<?php echo $row['uid']; ?>" class="uga-button">Ubah</a>
-                        <a href="../ubah/index.php?uid=<?php echo $row['uid']; ?>" class="uga-button">Info</a>
-                    </td>
-                </tr>
-            <?php
-            }
-            ?>
-        </table> -->
+        <button type="button" class="btn btn-secondary btn-lg" style="margin: 12px;"
+            onclick="window.location.href='../../shop/admin.php';">Shop</button>
     </div>
 
 
