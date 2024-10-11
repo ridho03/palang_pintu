@@ -95,6 +95,25 @@ $query_run = mysqli_query($connection, "SELECT * FROM sensor WHERE id='$id'");
       color: #4a90e2;
       text-decoration: none;
     }
+
+    .custom-heading {
+      font-size: 24px;
+      /* Ukuran font */
+      color: #333;
+      /* Warna teks */
+      text-align: center;
+      /* Penjajaran teks di tengah */
+      margin: 20px 0;
+      /* Jarak atas dan bawah */
+      font-weight: bold;
+      /* Ketebalan teks */
+      text-transform: uppercase;
+      /* Mengubah teks menjadi huruf kapital */
+      border-bottom: 2px solid #ccc;
+      /* Garis bawah */
+      padding-bottom: 10px;
+      /* Jarak antara teks dan garis bawah */
+    }
   </style>
 </head>
 
@@ -104,27 +123,18 @@ $query_run = mysqli_query($connection, "SELECT * FROM sensor WHERE id='$id'");
     crossorigin="anonymous"></script>
 
   <nav class="navbar">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        CARBON
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="../index.php">Dashboard</a></li>
-        <li><a class="dropdown-item" href="../tambah.php">Tambah Kendaraan</a></li>
-        <!-- <li><a class="dropdown-item" href="#">Catatan</a></li> -->
-        <li><a class="dropdown-item" href="../kendaraan.php">Shop</a></li>
-      </ul>
-    </div>
+    <span class="navbar-brand">Data Sensor</span>
     <div class="btn-group">
       <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Profil
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="../../profil.php">Profil</a></li>
         <li><a class="dropdown-item" href="../../index.html">Keluar</a></li>
       </ul>
     </div>
   </nav>
+  <h3 class="custom-heading">Data Sensor</h3>
+
   <span class="navbar-brand"></span>
   </nav>
 
