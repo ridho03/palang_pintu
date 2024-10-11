@@ -1,4 +1,4 @@
-#Tutorial Penginstalan 
+![image](https://github.com/user-attachments/assets/58957d0e-57d8-4227-beee-54b4a674082e)#Tutorial Penginstalan 
 
   Cara Install Script 
 1. download file nya dengan cara klil "code" lalu "download ZIP"
@@ -11,3 +11,5 @@
 8. selanjutnya buka chrome buka "http://localhost/carbon"
 9. maka akan kebuka tampilan login web dan masukan username "ridho" password "ridho"
 10. done
+
+
