@@ -145,7 +145,7 @@ if (isset($_GET['uid'])) {
                 <li><a class="dropdown-item" href="">Dashboard</a></li>
                 <li><a class="dropdown-item" href="tambah.php?uid=<?php echo $uid; ?>">Tambah Kendaraan</a></li>
                 <!-- <li><a class="dropdown-item" href="info/data.php?uid=<?php echo $uid; ?>">Catatan</a></li> -->
-                <li><a class="dropdown-item" href="kendaraan.php?uid=<?php echo $uid; ?>">Data Kendaraan</a></li>
+                <li><a class="dropdown-item" href="../shop/index.php?uid=<?php echo $uid; ?>">Shop</a></li>
             </ul>
         </div>
 
@@ -176,6 +176,9 @@ if (isset($_GET['uid'])) {
                 <th>Tipe</th>
                 <th>CC</th>
                 <th>Tanggal Berlaku</th>
+                <th>Kuota karbon</th>
+                <th>Sisa karbon</th>
+                <th scope="col">Foto</th>
                 <th>Aksi</th>
             </tr>
             <?php
@@ -196,6 +199,11 @@ if (isset($_GET['uid'])) {
                 echo "<td>" . $row['tipe'] . "</td>";
                 echo "<td>" . $row['CC'] . "</td>";
                 echo "<td>" . $row['tanggal_berlaku'] . "</td>";
+                echo "<td>" . $row['kkarbon'] . " kgCO2eq</td>";
+                echo "<td>" . $row['skarbon'] . " kgCO2eq</td>";
+
+                echo "<td><img src='../image/" . $row["files"] . "' alt='" . $row["files"] . "' style='width:100px; height:auto;'></td>";
+
                 echo "<td>";
                 // Tombol untuk aksi hapus, sekarang menggunakan id
                 echo "<a href='../hapus/index.php?id=" . $row['id'] . "' class='btn btn-danger'>Hapus</a> ";

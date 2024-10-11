@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_GET['uid'])) {
-    $uid = $_GET['uid'];
+    $uidd = $_GET['uid'];
     //echo "User ID: " . $uid; // Menampilkan UID jika diperlukan
 }
 
@@ -116,10 +116,10 @@ if (isset($_GET['uid'])) {
                 CARBON
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.php?uid=<?php echo $uid; ?>">Dashboard</a></li>
+                <li><a class="dropdown-item" href="index.php?uid=<?php echo $uidd; ?>">Dashboard</a></li>
                 <li><a class="dropdown-item" href="">Tambah Kendaraan</a></li>
-                <!-- <li><a class="dropdown-item" href="info/data.php?uid=<?php echo $uid; ?>">Catatan</a></li> -->
-                <li><a class="dropdown-item" href="kendaraan.php?uid=<?php echo $uid; ?>">Data Kendaraan</a></li>
+                <!-- <li><a class="dropdown-item" href="info/data.php?uid=<?php echo $uidd; ?>">Catatan</a></li> -->
+                <li><a class="dropdown-item" href="../shop/index.php?uid=<?php echo $uidd; ?>">Shop</a></li>
             </ul>
         </div>
         <!-- Example single danger button -->
@@ -129,7 +129,7 @@ if (isset($_GET['uid'])) {
                 Profil
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../profil.php?uid=<?php echo $uid; ?>">Profil</a></li>
+                <li><a class="dropdown-item" href="../profil.php?uid=<?php echo $uidd; ?>">Profil</a></li>
                 <li><a class="dropdown-item" href="../index.html">Keluar</a></li>
             </ul>
         </div>
@@ -142,7 +142,7 @@ if (isset($_GET['uid'])) {
 
             <div class="form-group">
                 <label for="uid">UID</label>
-                <input type="text" id="uid" name="uid" value="<?php echo $uid; ?>" readonly />
+                <input type="text" id="uid" name="uid" value="<?php echo $uidd; ?>" readonly />
             </div>
             <div class="form-group">
                 <label for="id">ID</label>
@@ -187,22 +187,22 @@ if (isset($_GET['uid'])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function cekUID() {
-            $.ajax({
-                type: "GET",
-                url: "entry.php",
-                cache: false,
-                success: function (response) {
-                    console.log(response);
-                    $("#uid").val(response);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.error(errorThrown);
-                }
-            });
-        }
-        setInterval(cekUID, 2000);
-    </script>
+        //     function cekUID() {
+        //         $.ajax({
+        //             type: "GET",
+        //             url: "entry.php",
+        //             cache: false,
+        //             success: function (response) {
+        //                 console.log(response);
+        //                 $("#uid").val(response);
+        //             },
+        //             error: function (jqXHR, textStatus, errorThrown) {
+        //                 console.error(errorThrown);
+        //             }
+        //         });
+        //     }
+        //     setInterval(cekUID, 2000);
+        // </script>
 </body>
 
 
