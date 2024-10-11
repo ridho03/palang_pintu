@@ -144,8 +144,7 @@ if (isset($_GET['uid'])) {
                 <li><a class="dropdown-item" href="dasboard/tambah.php?uid=<?php echo $uid; ?>">Tambah Kendaraan</a>
                 </li>
                 <!-- <li><a class="dropdown-item" href="dasboard/info/data.php?uid=<?php echo $uid; ?>">Catatan</a></li> -->
-                <li><a class="dropdown-item" href="dasboard/kendaraan.php?uid=<?php echo $uid; ?>">Data Kendaraan</a>
-                </li>
+                <li><a class="dropdown-item" href="shop/index.php?uid=<?php echo $uid; ?>">Shop</a></li>
             </ul>
         </div>
         <div class="btn-group">
