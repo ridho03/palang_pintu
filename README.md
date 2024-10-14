@@ -7,10 +7,11 @@
 4. pindahkan file palang_pintu ke C:\xampp\htdocs
 5. selanjutnya buka xampp start apache dan mysql, pastikan sudah berjalan dengan baik
 6. buka chrome atau web browser lainnya dan buka http://localhost/phpmyadmin/
-7. selanjutnya klik "import" dan "select file carbon.sql" dari file yang di carbon tadi
-8. selanjutnya buka chrome buka "http://localhost/carbon"
-9. maka akan kebuka tampilan login web dan masukan username "ridho" password "ridho"
-10. done
+7. klik new buat tabel dengan nama "carbon"
+8. selanjutnya klik "import" dan "select file carbon.sql" dari file yang di carbon tadi
+9. selanjutnya buka chrome buka "http://localhost/carbon"
+10. maka akan kebuka tampilan login web dan masukan username "ridho" password "ridho"
+11. done
 
 
 Tampilan user web
