@@ -4,7 +4,9 @@ include "koneksi/koneksi.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $uid = $_POST["uid"];
+
+    // Generate random UID dengan maksimal 4 digit
+    $uid = rand(1000, 9999);
 
     // Perintah SQL untuk menyimpan data ke dalam tabel admin
     $sql = "INSERT INTO login (uid, username, password) VALUES ('$uid', '$username', '$password')";
@@ -24,3 +26,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 mysqli_close($conn);
+?>
