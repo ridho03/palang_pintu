@@ -13,7 +13,7 @@ if (isset($_GET['uid'])) {
 <html>
 
 <head>
-    <title>Add Member</title>
+    <title>Tambah Kendaraan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -101,6 +101,25 @@ if (isset($_GET['uid'])) {
             color: #4a90e2;
             text-decoration: none;
         }
+
+        .custom-heading {
+            font-size: 24px;
+            /* Ukuran font */
+            color: #333;
+            /* Warna teks */
+            text-align: center;
+            /* Penjajaran teks di tengah */
+            margin: 20px 0;
+            /* Jarak atas dan bawah */
+            font-weight: bold;
+            /* Ketebalan teks */
+            text-transform: uppercase;
+            /* Mengubah teks menjadi huruf kapital */
+            border-bottom: 2px solid #ccc;
+            /* Garis bawah */
+            padding-bottom: 10px;
+            /* Jarak antara teks dan garis bawah */
+        }
     </style>
 </head>
 
@@ -139,6 +158,7 @@ if (isset($_GET['uid'])) {
 
     <div class="form-container">
         <form action="upload.php" method="post" enctype="multipart/form-data">
+            <h3 class="custom-heading">Tambah Kendaraan</h3>
 
             <div class="form-group">
                 <label for="uid">UID</label>
@@ -148,6 +168,15 @@ if (isset($_GET['uid'])) {
                 <label for="id">ID</label>
                 <input type="text" id="id" name="id" required maxlength="4" />
             </div>
+            <div class="form-group">
+                <label for="jenis_kendaraan">Jenis Kendaraan</label>
+                <select id="jenis_kendaraan" name="jenis_kendaraan" class="form-select" required>
+                    <option value="">-- Pilih Jenis Kendaraan --</option>
+                    <option value="Motor">motor</option>
+                    <option value="Mobil">mobil</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="no_plat">No Plat</label>
                 <input type="text" id="no_plat" name="no_plat" required maxlength="200" />

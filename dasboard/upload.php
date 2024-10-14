@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal_berlaku = mysqli_real_escape_string($conn, $_POST["tanggal_berlaku"]);
     $uid = mysqli_real_escape_string($conn, $_POST["uid"]);
     $no_plat = mysqli_real_escape_string($conn, $_POST["no_plat"]);
+    $jenis_kendaraan = mysqli_real_escape_string($conn, $_POST["jenis_kendaraan"]);
     $CC = mysqli_real_escape_string($conn, $_POST["CC"]);
 
     // File Upload Handling
@@ -43,18 +44,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Upload file ke direktori
             if (move_uploaded_file($file_tmp, $upload_dir . $file_name)) {
-                $kkarbon = '500.000';
-                $skarbon = '500.000';
+                $kkarbon = '500000';
+                $skarbon = '500000';
 
                 // Persiapan query
-                $stmt = mysqli_prepare($conn, "INSERT INTO data (id, merk, tipe, tanggal_berlaku, nama, alamat, uid, no_plat, CC, kkarbon, skarbon, files) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt = mysqli_prepare($conn, "INSERT INTO data (id, merk, tipe, tanggal_berlaku, nama, alamat, uid, no_plat, jenis_kendaraan, CC, kkarbon, skarbon, files) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
                 if ($stmt === false) {
                     die("Query salah: " . mysqli_error($conn));
                 }
 
                 // Bind parameter ke statement
-                mysqli_stmt_bind_param($stmt, "ssssssssssss", $id, $merk, $tipe, $tanggal_berlaku, $nama, $alamat, $uid, $no_plat, $CC, $kkarbon, $skarbon, $file_name);
+                mysqli_stmt_bind_param($stmt, "sssssssssssss", $id, $merk, $tipe, $tanggal_berlaku, $nama, $alamat, $uid, $no_plat, $jenis_kendaraan, $CC, $kkarbon, $skarbon, $file_name);
 
                 // Eksekusi statement
                 if (mysqli_stmt_execute($stmt)) {
