@@ -10,7 +10,7 @@ if (isset($_GET['uid'])) {
 <html>
 
 <head>
-    <title>Dashboard</title>
+    <title>Info Kendaraan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
@@ -174,6 +174,7 @@ if (isset($_GET['uid'])) {
         <!--  -->
 
         <table>
+            <h3 class="custom-heading">Kendaraan Roda 2</h3>
             <tr>
                 <th>ID</th>
                 <th>Nama</th>
@@ -185,18 +186,17 @@ if (isset($_GET['uid'])) {
                 <th>Tanggal Berlaku</th>
                 <th>Kuota karbon</th>
                 <th>Sisa karbon</th>
-                <th scope="col">Foto</th>
+                <th>Foto</th>
                 <th>Aksi</th>
             </tr>
             <?php
             include "../../koneksi/koneksi.php";
             $connection = mysqli_connect($servername, $username, $password, $dbname);
 
-            // Query untuk mendapatkan data berdasarkan uid
-            $query_run = mysqli_query($conn, "SELECT * FROM data WHERE uid='$uid'");
+            // Query untuk kendaraan roda 2
+            $query_roda2 = mysqli_query($conn, "SELECT * FROM data WHERE uid='$uid' AND jenis_kendaraan='motor'");
 
-            while ($row = mysqli_fetch_array($query_run)) {
-                // Tampilkan data dari tabel data
+            while ($row = mysqli_fetch_array($query_roda2)) {
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['nama'] . "</td>";
@@ -209,15 +209,54 @@ if (isset($_GET['uid'])) {
                 echo "<td>" . $row['kkarbon'] . " kgCO2eq</td>";
                 echo "<td>" . $row['skarbon'] . " kgCO2eq</td>";
                 echo "<td><img src='../../image/" . $row["files"] . "' alt='" . $row["files"] . "' style='width:100px; height:auto;'></td>";
+                echo "<td>
+                    <a href='../../hapus/index.php?id=" . $row['id'] . "' class='btn btn-danger'>Hapus</a>
+                    <a href='../../ubah/index.php?id=" . $row['id'] . "' class='btn btn-warning'>Ubah</a>
+                    <a href='../info/data.php?id=" . $row['id'] . "' class='btn btn-info'>Info</a>
+                </td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
 
-                echo "<td>";
-                // Tombol untuk aksi hapus, sekarang menggunakan id
-                echo "<a href='../../hapus/data.php?id=" . $row['id'] . "' class='btn btn-danger'>Hapus</a> ";
-                // Tombol untuk aksi ubah
-                echo "<a href='../../ubah/data.php?id=" . $row['id'] . "' class='btn btn-warning'>Ubah</a> ";
-                // Tombol untuk aksi info
-                echo "<a href='../info/admin.php?id=" . $row['id'] . "' class='btn btn-info'>Info</a>";
-                echo "</td>";
+        <table>
+            <h3 class="custom-heading">Kendaraan Roda 4</h3>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Alamat</th>
+                <th>Merk</th>
+                <th>No Plat</th>
+                <th>Tipe</th>
+                <th>CC</th>
+                <th>Tanggal Berlaku</th>
+                <th>Kuota karbon</th>
+                <th>Sisa karbon</th>
+                <th>Foto</th>
+                <th>Aksi</th>
+            </tr>
+            <?php
+            // Query untuk kendaraan roda 4
+            $query_roda4 = mysqli_query($conn, "SELECT * FROM data WHERE uid='$uid' AND jenis_kendaraan='mobil'");
+
+            while ($row = mysqli_fetch_array($query_roda4)) {
+                echo "<tr>";
+                echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['nama'] . "</td>";
+                echo "<td>" . $row['alamat'] . "</td>";
+                echo "<td>" . $row['merk'] . "</td>";
+                echo "<td>" . $row['no_plat'] . "</td>";
+                echo "<td>" . $row['tipe'] . "</td>";
+                echo "<td>" . $row['CC'] . "</td>";
+                echo "<td>" . $row['tanggal_berlaku'] . "</td>";
+                echo "<td>" . $row['kkarbon'] . " kgCO2eq</td>";
+                echo "<td>" . $row['skarbon'] . " kgCO2eq</td>";
+                echo "<td><img src='../../image/" . $row["files"] . "' alt='" . $row["files"] . "' style='width:100px; height:auto;'></td>";
+                echo "<td>
+                    <a href='../../hapus/index.php?id=" . $row['id'] . "' class='btn btn-danger'>Hapus</a>
+                    <a href='../../ubah/index.php?id=" . $row['id'] . "' class='btn btn-warning'>Ubah</a>
+                    <a href='../info/data.php?id=" . $row['id'] . "' class='btn btn-info'>Info</a>
+                </td>";
                 echo "</tr>";
             }
             ?>
