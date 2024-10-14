@@ -9,7 +9,7 @@
 6. buka chrome atau web browser lainnya dan buka http://localhost/phpmyadmin/
 7. klik new buat tabel dengan nama "carbon"
 8. selanjutnya klik "import" dan "select file carbon.sql" dari file yang di carbon tadi
-9. selanjutnya buka chrome buka "http://localhost/carbon"
+9. selanjutnya buka chrome buka "http://localhost/palang_pintu"
 10. maka akan kebuka tampilan login web dan masukan username "ridho" password "ridho"
 11. done
 
