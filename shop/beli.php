@@ -96,9 +96,10 @@ if (isset($_GET['uid'])) {
                 CARBON
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.php?uid=<?php echo $uid; ?>">Dashboard</a></li>
-                <li><a class="dropdown-item" href="">Tambah Kendaraan</a></li>
-                <li><a class="dropdown-item" href="kendaraan.php?uid=<?php echo $uid; ?>">Data Kendaraan</a></li>
+                <li><a class="dropdown-item" href="../dasboard/index.php?uid=<?php echo $uid; ?>">Dashboard</a></li>
+                <li><a class="dropdown-item" href="../dasboard/tambah.php?uid=<?php echo $uid; ?>">Tambah Kendaraan</a>
+                </li>
+                <li><a class="dropdown-item" href="">Shop</a></li>
             </ul>
         </div>
         <div class="btn-group">
