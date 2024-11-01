@@ -9,7 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uid = rand(1000, 9999);
 
     // Perintah SQL untuk menyimpan data ke dalam tabel admin
-    $sql = "INSERT INTO login (uid, username, password) VALUES ('$uid', '$username', '$password')";
+    $password= password_hash($password, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO user (uid, username, password,role) VALUES (UUID(), '$username', '$password','admin')";
+
 
     if (mysqli_query($conn, $sql)) {
         // Data berhasil disimpan, tampilkan pesan sukses menggunakan JavaScript

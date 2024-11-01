@@ -3,6 +3,6 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "carbon";
+$dbname = "db_carbon";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
