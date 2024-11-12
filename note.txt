@@ -1,0 +1,40 @@
+Route::get('/list_vehicle/{id}', function ($id) {
+    $datas = [
+        [
+            'id' => 1,
+            'keSSy1' => 'valSSue1',
+            'Skey2' => 'valuSe2',
+            // Tambahkan data lain sesuai kebutuhan
+        ],
+        [
+            'id' => 2,
+            'k22Sy1' => 'va22e1',
+            'AAAAAAAA' => 'valuSe2',
+            // Tambahkan data lain sesuai kebutuhan
+        ]
+    ];
+
+
+    // Mencari data berdasarkan ID
+    $data = Arr::first($datas, function ($item) use ($id) {
+        return $item['id'] == $id;
+    });
+
+    // Cek apakah data ditemukan
+    if (!$datas) {
+        return abort(404); // Jika tidak ditemukan, kembalikan halaman 404
+    }
+    $data = [
+        'id' => 2,
+        'k22Sy1' => 'va22e1',
+        'AAAAAAAA' => 'valuSe2',
+        // Tambahkan data lain sesuai kebutuhan
+    ]
+
+    return view('template', [
+        'content' => 'list_vehicle',
+        'data' => json_encode($data) // Mengirim data sebagai JSON
+    ]);
+});
+
+https://chatgpt.com/share/6729019f-68a8-8000-a29f-338f396c8262
